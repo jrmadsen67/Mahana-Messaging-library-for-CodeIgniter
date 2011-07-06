@@ -253,13 +253,13 @@ class Mahana_model extends CI_Model
     //***** private functions *****//
     //
 
-    function _insert_thread($subject)
+    private function _insert_thread($subject)
     {
             $insert_id = $this->db->insert('msg_threads', array('subject'=>$subject));
             return $this->db->insert_id();
     }
 
-    function _insert_message($thread_id, $sender_id, $body, $priority)
+    private function _insert_message($thread_id, $sender_id, $body, $priority)
     {
             $insert['thread_id'] = $thread_id;
             $insert['sender_id'] = $sender_id;
@@ -270,17 +270,17 @@ class Mahana_model extends CI_Model
             return $this->db->insert_id();
     }
 
-    function _insert_participants($participants)
+    private function _insert_participants($participants)
     {
             return $this->db->insert_batch('msg_participants', $participants);
     }
 
-    function _insert_statuses($statuses)
+    private function _insert_statuses($statuses)
     {
             return $this->db->insert_batch('msg_status', $statuses);
     }
 
-    function _get_thread_id_from_message($msg_id){
+    private function _get_thread_id_from_message($msg_id){
             $query = $this->db->select('thread_id')->get_where('msg_messages', array('id' => $msg_id));
             if ($query->num_rows()){
                 return $query->row()->thread_id;
@@ -288,14 +288,14 @@ class Mahana_model extends CI_Model
             return 0;
     }
 
-    function _get_messages_by_thread_id($thread_id)
+    private function _get_messages_by_thread_id($thread_id)
     {
             $query = $this->db->get_where('msg_messages', array('thread_id' => $thread_id));  
             return $query->result_array();
     }
 
 
-    function _get_thread_participants($thread_id, $sender_id=0) 
+    private function _get_thread_participants($thread_id, $sender_id=0) 
     {
             $array['thread_id'] = $thread_id;
             if ($sender_id)  //if $sender_id  0, no one to exclude 
@@ -310,7 +310,7 @@ class Mahana_model extends CI_Model
             return $query->result_array();
     }
 
-    function _delete_participant($thread_id, $user_id)
+    private function _delete_participant($thread_id, $user_id)
     {
             $this->db->delete('msg_participants', array('thread_id'=>$thread_id, 'user_id'=>$user_id));
             if ($this->db->affected_rows() > 0)
@@ -320,7 +320,7 @@ class Mahana_model extends CI_Model
             return false;
     }
 
-    function _delete_statuses($thread_id, $user_id)
+    private function _delete_statuses($thread_id, $user_id)
     {
             $sql = 'DELETE s FROM msg_status s ' .
                    ' JOIN msg_messages m ON (m.id = s.message_id) ' .

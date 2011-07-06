@@ -56,7 +56,7 @@ This library is intended as a starting off point for building an internal messag
 
 	3) return array $status makes for easy conversion to json format for ajax-based systems
 
-	4) get_full_thread() and get_all_threads() have a unique parameter - $full_thread. If set to true, a newly added participant to a thread can see all messages dating BEFORE he was added, allowing him to "catch up" on th econversation. Ideal for adding a manager ro a new salesperson to a conversation.
+	4) get_full_thread() and get_all_threads() have a unique parameter - $full_thread. If set to true, a newly added participant to a thread can see all messages dating BEFORE he was added, allowing him to "catch up" on the conversation. Ideal for adding a manager or a new salesperson to a conversation.
 
 
 Thank you for using Mahana Messaging! Please be sure to leave the author's credits in the library file.
