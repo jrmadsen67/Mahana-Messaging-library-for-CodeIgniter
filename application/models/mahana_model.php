@@ -300,10 +300,10 @@ class Mahana_model extends CI_Model
             $array['thread_id'] = $thread_id;
             if ($sender_id)  //if $sender_id  0, no one to exclude 
             {
-                $array['user_id != '] = $sender_id;
+                $array['msg_participants.user_id != '] = $sender_id;
             }
             
-            $this->db->select('user_id, '.USER_TABLE_USERNAME, false);            
+            $this->db->select('msg_participants.user_id, '.USER_TABLE_USERNAME, false);            
             $this->db->join(USER_TABLE_TABLENAME,'msg_participants.user_id ='.USER_TABLE_ID);
             $query = $this->db->get_where('msg_participants', $array);
             
