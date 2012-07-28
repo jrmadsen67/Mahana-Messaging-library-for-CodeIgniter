@@ -92,7 +92,7 @@ class Mahana_messaging
     
     /*
         function get_all_threads_grouped() - will return all threads for user, including the status for specified user.
-                                            messages are grouped in threads.
+                                           - messages are grouped in threads.
 
         @parameters - $user_id REQUIRED, $order_by OPTIONAL
                     - $full_thread - if true, user will also see messages from thread posted BEFORE user became participant
