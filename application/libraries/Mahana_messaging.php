@@ -89,6 +89,40 @@ class Mahana_messaging
         }
         return $status;
     }
+    
+    /*
+        function get_all_threads_grouped() - will return all threads for user, including the status for specified user.
+                                           - messages are grouped in threads.
+
+        @parameters - $user_id REQUIRED, $order_by OPTIONAL
+                    - $full_thread - if true, user will also see messages from thread posted BEFORE user became participant
+    */
+
+    function get_all_threads_grouped($user_id,  $full_thread=false, $order_by='asc')
+    {
+        $status = array('err'=>1, 'code'=>MSG_ERR_GENERAL, 'msg'=>lang('mahana_'.MSG_ERR_GENERAL));
+
+        if (empty($user_id)){$status = array('err'=>1, 'code'=>MSG_ERR_INVALID_USER_ID, 'msg'=>lang('mahana_'.MSG_ERR_INVALID_USER_ID));return $status;}
+
+        if ($message = $this->ci->mahana_model->get_all_threads($user_id,  $full_thread, $order_by))
+        {
+            $threads = array();
+
+            foreach ($message as $msg) {
+                if (!isset($threads[$msg['thread_id']]))
+                {
+                    $threads[$msg['thread_id']]['thread_id'] = $msg['thread_id'];
+                    $threads[$msg['thread_id']]['messages'] = array($msg);
+                }
+                else
+                {
+                    $threads[$msg['thread_id']]['messages'][] = $msg;
+                }
+            }
+            return $status = array('err'=>0, 'code'=>MSG_SUCCESS, 'msg'=>lang('mahana_'.MSG_SUCCESS), 'retval'=>$threads);
+        }
+        return $status;
+    }
 
 
     /*
