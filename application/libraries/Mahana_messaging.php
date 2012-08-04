@@ -4,6 +4,7 @@
 *
 * Author: Jeff Madsen
 *		  jrmadsen67@gmail.com
+          http://www.codebyjeff.com  
 *
 * Location: - will be on github shortly
 *
@@ -96,6 +97,8 @@ class Mahana_messaging
 
         @parameters - $user_id REQUIRED, $order_by OPTIONAL
                     - $full_thread - if true, user will also see messages from thread posted BEFORE user became participant
+
+        // Thanks to mirzadelic for this great addition            
     */
 
     function get_all_threads_grouped($user_id,  $full_thread=false, $order_by='asc')
