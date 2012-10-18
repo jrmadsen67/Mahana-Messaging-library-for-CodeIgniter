@@ -248,6 +248,12 @@ class Mahana_model extends CI_Model
         return false;
     }
 
+    function get_msg_count($user_id, $status_id = MSG_STATUS_UNREAD)
+    {
+        $query = $this->db->select('COUNT(*) AS msg_count')->where(array('user_id'=>$user_id, 'status'=>$status_id ))->get('msg_status');
+        return $query->row()->msg_count;
+    }
+
 
     //                                              
     //***** private functions *****//

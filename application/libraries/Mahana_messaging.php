@@ -255,4 +255,23 @@ class Mahana_messaging
         return $status;
     }
 
+    /*
+        function get_msg_count() - returns integer with count of message for user, by status. defaults to new messages
+
+        @parameters - $user_id REQUIRED, $status_id OPTIONAL (defaults to "Unread")
+    */
+
+    function get_msg_count($user_id, $status_id = MSG_STATUS_UNREAD)
+    {
+        $status = array('err'=>1, 'code'=>MSG_ERR_GENERAL, 'msg'=>lang('mahana_'.MSG_ERR_GENERAL));
+
+        if (empty($user_id)){$status = array('err'=>1, 'code'=>MSG_ERR_INVALID_USER_ID, 'msg'=>lang('mahana_'.MSG_ERR_INVALID_USER_ID));return $status;}
+
+        if ($message = $this->ci->mahana_model->get_msg_count($user_id, $status_id))
+        {
+            return $status = array('err'=>0, 'code'=>MSG_SUCCESS, 'msg'=>lang('mahana_'.MSG_SUCCESS), 'retval'=>$message);
+        }
+        return $status;        
+    }
+
 }
