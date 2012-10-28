@@ -1,7 +1,9 @@
 {
     "name": "jrmadsen67/Mahana-Messaging-library-for-CodeIgniter",
-	"description": "CodeIgniter library for internal application messaging",
+    "type": "library",
+    "description": "CodeIgniter library for internal application messaging",
     "keywords": ["codeigniter","messaging"],
+    "homepage": "https://github.com/jrmadsen67/Mahana-Messaging-library-for-CodeIgniter",
     "authors": [
         {
             "name": "Jeff Madsen",
