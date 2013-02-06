@@ -21,7 +21,8 @@ class Mahana_messaging
 	{
 
 		$this->ci =& get_instance();
-        require_once(APPPATH.'config/mahana.php');
+        require_once dirname(__FILE__).'/../config/mahana.php';
+
 
         $this->ci->load->model('mahana_model');
         $this->ci->load->helper('language');
