@@ -10,7 +10,7 @@ class Mahana_model extends CI_Model
      * @param   string   $subject
      * @param   string   $body
      * @param   integer  $priority
-     * @return  boolean
+     * @return  integer  $new_thread_id
      */
     function send_new_message($sender_id, $recipients, $subject, $body, $priority)
     {
@@ -60,7 +60,7 @@ class Mahana_model extends CI_Model
      * @param   integer  $sender_id
      * @param   string   $body
      * @param   integer  $priority
-     * @return  boolean
+     * @return  integer  $new_msg_id
      */
     function reply_to_message($reply_msg_id, $sender_id, $body, $priority)
     {
@@ -95,7 +95,7 @@ class Mahana_model extends CI_Model
             return FALSE;
         }
 
-        return TRUE;
+        return $msg_id;
     }
 
     // ------------------------------------------------------------------------

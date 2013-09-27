@@ -301,7 +301,7 @@ class Mahana_messaging
 
         if ($thread_id = $this->ci->mahana_model->send_new_message($sender_id, $recipients, $subject, $body, $priority))
         {
-            return $this->_success($thread_id);
+            return $this->_success($thread_id, MSG_MESSAGE_SENT);
         }
 
         // General Error Occurred
@@ -332,9 +332,9 @@ class Mahana_messaging
             return $this->_invalid_id(MSG_ERR_INVALID_MSG_ID);
         }
 
-        if ($this->ci->mahana_model->reply_to_message($msg_id, $sender_id, $body, $priority))
+        if ($new_msg_id = $this->ci->mahana_model->reply_to_message($msg_id, $sender_id, $body, $priority))
         {
-            return $this->_success(NULL, MSG_MESSAGE_SENT);
+            return $this->_success($new_msg_id, MSG_MESSAGE_SENT);
         }
 
         // General Error Occurred
