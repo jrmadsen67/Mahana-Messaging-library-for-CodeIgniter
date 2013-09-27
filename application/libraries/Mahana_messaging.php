@@ -111,7 +111,8 @@ class Mahana_messaging
             return $this->_invalid_id(MSG_ERR_INVALID_USER_ID);
         }
 
-        if ($message = $this->ci->mahana_model->get_all_threads($user_id, $full_thread, $order_by))
+		$message = $this->ci->mahana_model->get_all_threads($user_id, $full_thread, $order_by);
+        if (is_array($message))
         {
             return $this->_success($message);
         }
@@ -138,7 +139,8 @@ class Mahana_messaging
             return $this->_invalid_id(MSG_ERR_INVALID_USER_ID);
         }
 
-        if ($message = $this->ci->mahana_model->get_all_threads($user_id, $full_thread, $order_by))
+		$message = $this->ci->mahana_model->get_all_threads($user_id, $full_thread, $order_by);
+        if (is_array($message))
         {
             $threads = array();
 
