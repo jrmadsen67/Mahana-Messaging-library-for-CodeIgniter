@@ -380,7 +380,7 @@ class Mahana_messaging
             return $this->_invalid_id(MSG_ERR_INVALID_USER_ID);
         }
 
-        if ($message = $this->ci->mahana_model->get_msg_count($user_id, $status_id))
+        if (is_numeric($message = $this->ci->mahana_model->get_msg_count($user_id, $status_id)))
         {
             return $this->_success($message);
         }
