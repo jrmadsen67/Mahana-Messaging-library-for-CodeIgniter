@@ -37,7 +37,7 @@ class Mahana_messaging
     /**
      * get_message() - will return a single message, including the status for specified user.
      *
-     * @param   integer  $msg_id   EQUIRED
+     * @param   integer  $msg_id   REQUIRED
      * @param   integer  $user_id  REQUIRED
      * @return  array
      */
